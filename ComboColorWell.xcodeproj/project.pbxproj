@@ -1,0 +1,345 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		10D8D64F212F1DB2005F1C7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D8D64E212F1DB2005F1C7E /* AppDelegate.swift */; };
+		10D8D651212F1DB2005F1C7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D8D650212F1DB2005F1C7E /* ViewController.swift */; };
+		10D8D653212F1DB4005F1C7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10D8D652212F1DB4005F1C7E /* Assets.xcassets */; };
+		10D8D656212F1DB4005F1C7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D8D654212F1DB4005F1C7E /* Main.storyboard */; };
+		10D8D661212F2164005F1C7E /* ComboColorWell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D8D660212F2164005F1C7E /* ComboColorWell.swift */; };
+		10D8D663212F216E005F1C7E /* ComboColorWellImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10D8D662212F216E005F1C7E /* ComboColorWellImages.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		10D8D64B212F1DB2005F1C7E /* ComboColorWell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComboColorWell.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		10D8D64E212F1DB2005F1C7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		10D8D650212F1DB2005F1C7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		10D8D652212F1DB4005F1C7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		10D8D655212F1DB4005F1C7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		10D8D657212F1DB4005F1C7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10D8D658212F1DB4005F1C7E /* ComboColorWell.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ComboColorWell.entitlements; sourceTree = "<group>"; };
+		10D8D660212F2164005F1C7E /* ComboColorWell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComboColorWell.swift; sourceTree = "<group>"; };
+		10D8D662212F216E005F1C7E /* ComboColorWellImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ComboColorWellImages.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		10D8D648212F1DB2005F1C7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		10D8D642212F1DB2005F1C7E = {
+			isa = PBXGroup;
+			children = (
+				10D8D64D212F1DB2005F1C7E /* ComboColorWell */,
+				10D8D64C212F1DB2005F1C7E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		10D8D64C212F1DB2005F1C7E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				10D8D64B212F1DB2005F1C7E /* ComboColorWell.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		10D8D64D212F1DB2005F1C7E /* ComboColorWell */ = {
+			isa = PBXGroup;
+			children = (
+				10D8D64E212F1DB2005F1C7E /* AppDelegate.swift */,
+				10D8D650212F1DB2005F1C7E /* ViewController.swift */,
+				10D8D664212F21B9005F1C7E /* Combo Color Well */,
+				10D8D652212F1DB4005F1C7E /* Assets.xcassets */,
+				10D8D654212F1DB4005F1C7E /* Main.storyboard */,
+				10D8D657212F1DB4005F1C7E /* Info.plist */,
+				10D8D658212F1DB4005F1C7E /* ComboColorWell.entitlements */,
+			);
+			path = ComboColorWell;
+			sourceTree = "<group>";
+		};
+		10D8D664212F21B9005F1C7E /* Combo Color Well */ = {
+			isa = PBXGroup;
+			children = (
+				10D8D660212F2164005F1C7E /* ComboColorWell.swift */,
+				10D8D662212F216E005F1C7E /* ComboColorWellImages.xcassets */,
+			);
+			name = "Combo Color Well";
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		10D8D64A212F1DB2005F1C7E /* ComboColorWell */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10D8D65B212F1DB4005F1C7E /* Build configuration list for PBXNativeTarget "ComboColorWell" */;
+			buildPhases = (
+				10D8D647212F1DB2005F1C7E /* Sources */,
+				10D8D648212F1DB2005F1C7E /* Frameworks */,
+				10D8D649212F1DB2005F1C7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ComboColorWell;
+			productName = ComboColorWell;
+			productReference = 10D8D64B212F1DB2005F1C7E /* ComboColorWell.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		10D8D643212F1DB2005F1C7E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Cool Runnings";
+				TargetAttributes = {
+					10D8D64A212F1DB2005F1C7E = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 10D8D646212F1DB2005F1C7E /* Build configuration list for PBXProject "ComboColorWell" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 10D8D642212F1DB2005F1C7E;
+			productRefGroup = 10D8D64C212F1DB2005F1C7E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				10D8D64A212F1DB2005F1C7E /* ComboColorWell */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		10D8D649212F1DB2005F1C7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10D8D653212F1DB4005F1C7E /* Assets.xcassets in Resources */,
+				10D8D663212F216E005F1C7E /* ComboColorWellImages.xcassets in Resources */,
+				10D8D656212F1DB4005F1C7E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		10D8D647212F1DB2005F1C7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10D8D651212F1DB2005F1C7E /* ViewController.swift in Sources */,
+				10D8D64F212F1DB2005F1C7E /* AppDelegate.swift in Sources */,
+				10D8D661212F2164005F1C7E /* ComboColorWell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		10D8D654212F1DB4005F1C7E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				10D8D655212F1DB4005F1C7E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		10D8D659212F1DB4005F1C7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		10D8D65A212F1DB4005F1C7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		10D8D65C212F1DB4005F1C7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ComboColorWell/ComboColorWell.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ComboColorWell/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.coolrunnings.ComboColorWell;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		10D8D65D212F1DB4005F1C7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ComboColorWell/ComboColorWell.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ComboColorWell/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.coolrunnings.ComboColorWell;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		10D8D646212F1DB2005F1C7E /* Build configuration list for PBXProject "ComboColorWell" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10D8D659212F1DB4005F1C7E /* Debug */,
+				10D8D65A212F1DB4005F1C7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10D8D65B212F1DB4005F1C7E /* Build configuration list for PBXNativeTarget "ComboColorWell" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10D8D65C212F1DB4005F1C7E /* Debug */,
+				10D8D65D212F1DB4005F1C7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 10D8D643212F1DB2005F1C7E /* Project object */;
+}
