@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -710,7 +711,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Obi-pn-EOz" customClass="ComboColorWell" customModule="ComboColorWell" customModuleProvider="target">
-                                <rect key="frame" x="203" y="50" width="75" height="23"/>
+                                <rect key="frame" x="203" y="122" width="75" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="BNk-LZ-8XA"/>
                                     <constraint firstAttribute="width" constant="75" id="wxN-bx-jiN"/>
@@ -732,9 +733,9 @@
                             </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Obi-pn-EOz" secondAttribute="bottom" constant="50" id="9DU-zY-SJj"/>
                             <constraint firstItem="wKL-10-Ftr" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="40" id="LC5-II-v4R"/>
                             <constraint firstItem="Obi-pn-EOz" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="PxD-wM-spr"/>
+                            <constraint firstItem="Obi-pn-EOz" firstAttribute="top" secondItem="wKL-10-Ftr" secondAttribute="bottom" multiplier="1.5" constant="8" symbolic="YES" id="SbW-OI-GAN"/>
                             <constraint firstItem="wKL-10-Ftr" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="gj1-Tw-dfe"/>
                         </constraints>
                     </view>
