@@ -50,6 +50,13 @@ class ComboColorWell: NSControl {
         return cell
     }
     
+    // MARK: - Overridden functions
+    
+    override func resignFirstResponder() -> Bool {
+        comboColorWellCell.state = .off
+        return super.resignFirstResponder()
+    }
+
     // MARK: - init & private functions
     
     override init(frame frameRect: NSRect) {
@@ -66,6 +73,14 @@ class ComboColorWell: NSControl {
         cell = ComboColorWellCell()
     }
     
+}
+
+extension ComboColorWell: NSColorChanging {
+    func changeColor(_ sender: NSColorPanel?) {
+        if let sender = sender {
+            comboColorWellCell.colorAction(sender)
+        }
+    }
 }
 
 /**
@@ -108,15 +123,21 @@ class ComboColorWellCell: NSActionCell {
     // MARK: - public functions
     
     func mouseEntered(with event: NSEvent) {
-        mouseMoved(with: event)
+        if isEnabled {
+            mouseMoved(with: event)
+        }
     }
     
     func mouseExited(with event: NSEvent) {
-        mouseState = .outside
+        if isEnabled {
+            mouseState = .outside
+        }
     }
     
     func mouseMoved(with event: NSEvent) {
-        mouseState = .over(controlArea(for: event))
+        if isEnabled {
+            mouseState = .over(controlArea(for: event))
+        }
     }
     
     /**
@@ -192,7 +213,7 @@ class ComboColorWellCell: NSActionCell {
     }
     
     // MARK: - overrided functions
-
+    
     override func setNextState() {
         // disable next state default setting, called mainly by the default cell mouse tracking
         return
@@ -295,6 +316,10 @@ class ComboColorWellCell: NSActionCell {
         path.setClip()
         // draw the control border
         path.stroke()
+
+        if !isEnabled {
+            fill(path: path, withColor: NSColor(calibratedWhite: 1.0, alpha: 0.25))
+        }
 
         switch mouseState {
         case let .over(controlArea),
@@ -439,17 +464,16 @@ class ComboColorWellCell: NSActionCell {
         case .off:
             if colorPanel.isVisible,
                 colorPanel.delegate === self {
-                colorPanel.setTarget(nil)
-                colorPanel.setAction(nil)
                 colorPanel.delegate = nil
             }
         case .on:
-            colorPanel.showsAlpha = allowClearColor
-            colorPanel.color = color
-            colorPanel.orderFront(self)
-            colorPanel.setTarget(self)
-            colorPanel.setAction(#selector(colorAction(_:)))
-            colorPanel.delegate = self
+            if let window = controlView?.window,
+                window.makeFirstResponder(controlView) {
+                colorPanel.delegate = self
+                colorPanel.showsAlpha = allowClearColor
+                colorPanel.color = color
+                colorPanel.orderFront(self)
+            }
         default:
             break
         }
@@ -1003,4 +1027,14 @@ extension NSColor {
     convenience init(red: Int, green: Int, blue: Int, alpha: CGFloat = 1.0) {
         self.init(calibratedRed: CGFloat(red) / 255, green: CGFloat(green) / 255, blue: CGFloat(blue) / 255, alpha: alpha)
     }
+}
+
+class myTextView: NSTextView {
+//    override func changeColor(_ sender: Any?) {
+//        if let colorPanel = sender as? NSColorPanel,
+//            let _ = colorPanel.delegate as? ComboColorWellCell {
+//            return
+//        }
+//        super.changeColor(sender)
+//    }
 }
