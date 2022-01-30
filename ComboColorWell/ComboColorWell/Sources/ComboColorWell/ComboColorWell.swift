@@ -12,14 +12,14 @@ import Cocoa
  A control to pick a color.
  It has the look & feel of the color control of Apple apps like Pages, Numbers etc.
  */
-class ComboColorWell: NSControl {
+public class ComboColorWell: NSControl {
     
     // MARK: - public vars
     
     /**
      The color currently represented by the control.
      */
-    @IBInspectable var color: NSColor {
+    @IBInspectable public var color: NSColor {
         get {
             return comboColorWellCell.color
         }
@@ -52,7 +52,7 @@ class ComboColorWell: NSControl {
     
     // MARK: - Overridden functions
     
-    override func resignFirstResponder() -> Bool {
+    public override func resignFirstResponder() -> Bool {
         comboColorWellCell.state = .off
         return super.resignFirstResponder()
     }
@@ -76,7 +76,7 @@ class ComboColorWell: NSControl {
 }
 
 extension ComboColorWell: NSColorChanging {
-    func changeColor(_ sender: NSColorPanel?) {
+    public func changeColor(_ sender: NSColorPanel?) {
         if let sender = sender {
             comboColorWellCell.colorAction(sender)
         }
@@ -279,7 +279,8 @@ class ComboColorWellCell: NSActionCell {
             }
         }
         
-        #imageLiteral(resourceName: "ColorWheel").draw(in: NSInsetRect(buttonArea(withFrame: cellFrame, smoothed: true), imageInset, imageInset))
+        let colorWheelIcon = Bundle.module.image(forResource: "ColorWheel")!
+        colorWheelIcon.draw(in: NSInsetRect(buttonArea(withFrame: cellFrame, smoothed: true), imageInset, imageInset))
 
         // clip to fill the color area
         NSBezierPath.clip(colorArea(withFrame: cellFrame))
@@ -326,7 +327,8 @@ class ComboColorWellCell: NSActionCell {
              let .down(controlArea):
             switch controlArea {
             case .color:
-                #imageLiteral(resourceName: "CircledDownArrow").draw(in: popoverButtonArea(withFrame: cellFrame, smoothed: true))
+                let circledDownArrow = Bundle.module.image(forResource: "CircledDownArrow")!
+                circledDownArrow.draw(in: popoverButtonArea(withFrame: cellFrame, smoothed: true))
             default:
                 break
             }
@@ -861,7 +863,7 @@ class ColorGridView: NSGridView {
      */
     private func colorView(for color: NSColor) -> ColorView? {
         for (columnIndex, colorArray) in colorArrays.enumerated() {
-            if let rowIndex = colorArray.index(of: color) {
+            if let rowIndex = colorArray.firstIndex(of: color) {
                 return column(at: columnIndex).cell(at: rowIndex).contentView as? ColorView
             }
         }

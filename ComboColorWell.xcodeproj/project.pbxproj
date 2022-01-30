@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,20 +11,18 @@
 		10D8D651212F1DB2005F1C7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D8D650212F1DB2005F1C7E /* ViewController.swift */; };
 		10D8D653212F1DB4005F1C7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10D8D652212F1DB4005F1C7E /* Assets.xcassets */; };
 		10D8D656212F1DB4005F1C7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D8D654212F1DB4005F1C7E /* Main.storyboard */; };
-		10D8D661212F2164005F1C7E /* ComboColorWell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D8D660212F2164005F1C7E /* ComboColorWell.swift */; };
-		10D8D663212F216E005F1C7E /* ComboColorWellImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10D8D662212F216E005F1C7E /* ComboColorWellImages.xcassets */; };
+		1281E9BE27A6EB9A00BBEC56 /* ComboColorWell in Frameworks */ = {isa = PBXBuildFile; productRef = 1281E9BD27A6EB9A00BBEC56 /* ComboColorWell */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		10D8D64B212F1DB2005F1C7E /* ComboColorWell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComboColorWell.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		10D8D64B212F1DB2005F1C7E /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10D8D64E212F1DB2005F1C7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10D8D650212F1DB2005F1C7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		10D8D652212F1DB4005F1C7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10D8D655212F1DB4005F1C7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		10D8D657212F1DB4005F1C7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10D8D658212F1DB4005F1C7E /* ComboColorWell.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ComboColorWell.entitlements; sourceTree = "<group>"; };
-		10D8D660212F2164005F1C7E /* ComboColorWell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComboColorWell.swift; sourceTree = "<group>"; };
-		10D8D662212F216E005F1C7E /* ComboColorWellImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ComboColorWellImages.xcassets; sourceTree = "<group>"; };
+		1281E9B927A6EAE300BBEC56 /* ComboColorWell */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ComboColorWell; path = ComboColorWell/ComboColorWell; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1281E9BE27A6EB9A00BBEC56 /* ComboColorWell in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,13 +42,14 @@
 			children = (
 				10D8D64D212F1DB2005F1C7E /* ComboColorWell */,
 				10D8D64C212F1DB2005F1C7E /* Products */,
+				1281E9BA27A6EB6D00BBEC56 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		10D8D64C212F1DB2005F1C7E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				10D8D64B212F1DB2005F1C7E /* ComboColorWell.app */,
+				10D8D64B212F1DB2005F1C7E /* Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -59,31 +59,28 @@
 			children = (
 				10D8D64E212F1DB2005F1C7E /* AppDelegate.swift */,
 				10D8D650212F1DB2005F1C7E /* ViewController.swift */,
-				10D8D664212F21B9005F1C7E /* Combo Color Well */,
 				10D8D652212F1DB4005F1C7E /* Assets.xcassets */,
 				10D8D654212F1DB4005F1C7E /* Main.storyboard */,
 				10D8D657212F1DB4005F1C7E /* Info.plist */,
 				10D8D658212F1DB4005F1C7E /* ComboColorWell.entitlements */,
+				1281E9B927A6EAE300BBEC56 /* ComboColorWell */,
 			);
 			path = ComboColorWell;
 			sourceTree = "<group>";
 		};
-		10D8D664212F21B9005F1C7E /* Combo Color Well */ = {
+		1281E9BA27A6EB6D00BBEC56 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				10D8D660212F2164005F1C7E /* ComboColorWell.swift */,
-				10D8D662212F216E005F1C7E /* ComboColorWellImages.xcassets */,
 			);
-			name = "Combo Color Well";
-			path = "New Group";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		10D8D64A212F1DB2005F1C7E /* ComboColorWell */ = {
+		10D8D64A212F1DB2005F1C7E /* Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 10D8D65B212F1DB4005F1C7E /* Build configuration list for PBXNativeTarget "ComboColorWell" */;
+			buildConfigurationList = 10D8D65B212F1DB4005F1C7E /* Build configuration list for PBXNativeTarget "Example" */;
 			buildPhases = (
 				10D8D647212F1DB2005F1C7E /* Sources */,
 				10D8D648212F1DB2005F1C7E /* Frameworks */,
@@ -93,9 +90,12 @@
 			);
 			dependencies = (
 			);
-			name = ComboColorWell;
+			name = Example;
+			packageProductDependencies = (
+				1281E9BD27A6EB9A00BBEC56 /* ComboColorWell */,
+			);
 			productName = ComboColorWell;
-			productReference = 10D8D64B212F1DB2005F1C7E /* ComboColorWell.app */;
+			productReference = 10D8D64B212F1DB2005F1C7E /* Example.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -110,7 +110,7 @@
 				TargetAttributes = {
 					10D8D64A212F1DB2005F1C7E = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1320;
 					};
 				};
 			};
@@ -127,7 +127,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				10D8D64A212F1DB2005F1C7E /* ComboColorWell */,
+				10D8D64A212F1DB2005F1C7E /* Example */,
 			);
 		};
 /* End PBXProject section */
@@ -138,7 +138,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				10D8D653212F1DB4005F1C7E /* Assets.xcassets in Resources */,
-				10D8D663212F216E005F1C7E /* ComboColorWellImages.xcassets in Resources */,
 				10D8D656212F1DB4005F1C7E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,7 +151,6 @@
 			files = (
 				10D8D651212F1DB2005F1C7E /* ViewController.swift in Sources */,
 				10D8D64F212F1DB2005F1C7E /* AppDelegate.swift in Sources */,
-				10D8D661212F2164005F1C7E /* ComboColorWell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +295,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.coolrunnings.ComboColorWell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -315,7 +313,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.coolrunnings.ComboColorWell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -331,7 +329,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		10D8D65B212F1DB4005F1C7E /* Build configuration list for PBXNativeTarget "ComboColorWell" */ = {
+		10D8D65B212F1DB4005F1C7E /* Build configuration list for PBXNativeTarget "Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				10D8D65C212F1DB4005F1C7E /* Debug */,
@@ -341,6 +339,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1281E9BD27A6EB9A00BBEC56 /* ComboColorWell */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ComboColorWell;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 10D8D643212F1DB2005F1C7E /* Project object */;
 }
