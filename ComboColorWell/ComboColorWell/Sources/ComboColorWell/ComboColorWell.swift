@@ -238,10 +238,20 @@ class ComboColorWellCell: NSActionCell {
         }
         
         // hard coded colors and gradients
-        let buttonGradient: NSGradient = {
-            NSGradient(starting: NSColor(red: 17, green: 103, blue: 255),
-                       ending: NSColor(red: 95, green: 165, blue: 255))!
-        }()
+        let buttonGradient: NSGradient
+        
+        if #available(macOS 10.14, *) {
+            let accentColor = NSColor.controlAccentColor.usingColorSpace(.sRGB)!
+            let lighterColor = NSColor(hue: accentColor.hueComponent,
+                                       saturation: accentColor.saturationComponent - 0.3,
+                                       brightness: 1, alpha: 1)
+            let darkerColor = accentColor
+            buttonGradient = NSGradient(starting: darkerColor, ending: lighterColor)!
+        }
+        else {
+            buttonGradient = NSGradient(starting: NSColor(red: 17, green: 103, blue: 255),
+                                        ending: NSColor(red: 95, green: 165, blue: 255))!
+        }
         
         NSColor.black.withAlphaComponent(0.25).setStroke()
 
@@ -758,14 +768,21 @@ class ColorGridView: NSGridView {
         }
     }
     
+    
+    private var previousColor: NSColor?
+    
     // MARK: - public functions
 
     /**
      Try to select the element in the grid that represents the passed color.
      */
     @discardableResult func selectColor(_ color: NSColor) -> Bool {
+        if let previousColor = previousColor, let colorView = colorView(for: previousColor) {
+            colorView.selected = false
+        }
         if let colorView = colorView(for: color) {
             colorView.selected = true
+            previousColor = color
             return true
         }
         return false
@@ -822,7 +839,7 @@ class ColorGridView: NSGridView {
         // Treat each array in views as a column of the grid
         views.forEach { addColumn(with: $0) }
         
-        setPadding(5.0)
+        setPadding(10.0)
         
         // set grid elements size and placement
         (0..<numberOfColumns).forEach {
@@ -931,11 +948,12 @@ class ColorView: NSView {
         
         if selected {
             NSColor.white.setStroke()
+            context.stroke(dirtyRect, width: 4.0)
         } else {
-            NSColor.gray.withAlphaComponent(0.5).setStroke()
+            NSColor(white: 0.38, alpha: 1).setStroke()
+            context.setBlendMode(.hardLight)
+            context.stroke(dirtyRect, width: 2.0)
         }
-
-        context.stroke(dirtyRect, width: selected ? 2.0 : 1.0)
     }
     
     override func mouseDown(with event: NSEvent) {
