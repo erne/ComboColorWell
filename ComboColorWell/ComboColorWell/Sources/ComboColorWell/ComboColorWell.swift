@@ -31,7 +31,7 @@ public class ComboColorWell: NSControl {
     /**
      Set this to false if you don't want the popover to show the clear color in the grid.
      */
-    @IBInspectable var allowClearColor: Bool {
+    @IBInspectable public var allowClearColor: Bool {
         get {
             return comboColorWellCell.allowClearColor
         }
@@ -59,12 +59,12 @@ public class ComboColorWell: NSControl {
 
     // MARK: - init & private functions
     
-    override init(frame frameRect: NSRect) {
+    override public init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         doInit()
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         doInit()
     }
