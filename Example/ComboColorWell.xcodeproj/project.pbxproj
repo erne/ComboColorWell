@@ -22,7 +22,7 @@
 		10D8D655212F1DB4005F1C7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		10D8D657212F1DB4005F1C7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10D8D658212F1DB4005F1C7E /* ComboColorWell.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ComboColorWell.entitlements; sourceTree = "<group>"; };
-		1281E9B927A6EAE300BBEC56 /* ComboColorWell */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ComboColorWell; path = ComboColorWell/ComboColorWell; sourceTree = SOURCE_ROOT; };
+		1263A7F427A7D2890036B22C /* ComboColorWell */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ComboColorWell; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +40,7 @@
 		10D8D642212F1DB2005F1C7E = {
 			isa = PBXGroup;
 			children = (
+				1263A7F327A7D2890036B22C /* Packages */,
 				10D8D64D212F1DB2005F1C7E /* ComboColorWell */,
 				10D8D64C212F1DB2005F1C7E /* Products */,
 				1281E9BA27A6EB6D00BBEC56 /* Frameworks */,
@@ -63,9 +64,16 @@
 				10D8D654212F1DB4005F1C7E /* Main.storyboard */,
 				10D8D657212F1DB4005F1C7E /* Info.plist */,
 				10D8D658212F1DB4005F1C7E /* ComboColorWell.entitlements */,
-				1281E9B927A6EAE300BBEC56 /* ComboColorWell */,
 			);
 			path = ComboColorWell;
+			sourceTree = "<group>";
+		};
+		1263A7F327A7D2890036B22C /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				1263A7F427A7D2890036B22C /* ComboColorWell */,
+			);
+			name = Packages;
 			sourceTree = "<group>";
 		};
 		1281E9BA27A6EB6D00BBEC56 /* Frameworks */ = {
