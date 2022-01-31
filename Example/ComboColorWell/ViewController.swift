@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import ComboColorWell
 
 class ViewController: NSViewController {
     @IBOutlet weak var coolLabel: NSTextField!

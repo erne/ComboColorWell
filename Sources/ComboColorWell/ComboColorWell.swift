@@ -12,14 +12,14 @@ import Cocoa
  A control to pick a color.
  It has the look & feel of the color control of Apple apps like Pages, Numbers etc.
  */
-class ComboColorWell: NSControl {
+public class ComboColorWell: NSControl {
     
     // MARK: - public vars
     
     /**
      The color currently represented by the control.
      */
-    @IBInspectable var color: NSColor {
+    @IBInspectable public var color: NSColor {
         get {
             return comboColorWellCell.color
         }
@@ -31,7 +31,7 @@ class ComboColorWell: NSControl {
     /**
      Set this to false if you don't want the popover to show the clear color in the grid.
      */
-    @IBInspectable var allowClearColor: Bool {
+    @IBInspectable public var allowClearColor: Bool {
         get {
             return comboColorWellCell.allowClearColor
         }
@@ -52,19 +52,19 @@ class ComboColorWell: NSControl {
     
     // MARK: - Overridden functions
     
-    override func resignFirstResponder() -> Bool {
+    public override func resignFirstResponder() -> Bool {
         comboColorWellCell.state = .off
         return super.resignFirstResponder()
     }
 
     // MARK: - init & private functions
     
-    override init(frame frameRect: NSRect) {
+    override public init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         doInit()
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         doInit()
     }
@@ -76,7 +76,7 @@ class ComboColorWell: NSControl {
 }
 
 extension ComboColorWell: NSColorChanging {
-    func changeColor(_ sender: NSColorPanel?) {
+    public func changeColor(_ sender: NSColorPanel?) {
         if let sender = sender {
             comboColorWellCell.colorAction(sender)
         }
@@ -238,10 +238,20 @@ class ComboColorWellCell: NSActionCell {
         }
         
         // hard coded colors and gradients
-        let buttonGradient: NSGradient = {
-            NSGradient(starting: NSColor(red: 17, green: 103, blue: 255),
-                       ending: NSColor(red: 95, green: 165, blue: 255))!
-        }()
+        let buttonGradient: NSGradient
+        
+        if #available(macOS 10.14, *) {
+            let accentColor = NSColor.controlAccentColor.usingColorSpace(.sRGB)!
+            let lighterColor = NSColor(hue: accentColor.hueComponent,
+                                       saturation: accentColor.saturationComponent - 0.3,
+                                       brightness: 1, alpha: 1)
+            let darkerColor = accentColor
+            buttonGradient = NSGradient(starting: darkerColor, ending: lighterColor)!
+        }
+        else {
+            buttonGradient = NSGradient(starting: NSColor(red: 17, green: 103, blue: 255),
+                                        ending: NSColor(red: 95, green: 165, blue: 255))!
+        }
         
         NSColor.black.withAlphaComponent(0.25).setStroke()
 
@@ -279,7 +289,8 @@ class ComboColorWellCell: NSActionCell {
             }
         }
         
-        #imageLiteral(resourceName: "ColorWheel").draw(in: NSInsetRect(buttonArea(withFrame: cellFrame, smoothed: true), imageInset, imageInset))
+        let colorWheelIcon = Bundle.module.image(forResource: "ColorWheel")!
+        colorWheelIcon.draw(in: NSInsetRect(buttonArea(withFrame: cellFrame, smoothed: true), imageInset, imageInset))
 
         // clip to fill the color area
         NSBezierPath.clip(colorArea(withFrame: cellFrame))
@@ -326,7 +337,8 @@ class ComboColorWellCell: NSActionCell {
              let .down(controlArea):
             switch controlArea {
             case .color:
-                #imageLiteral(resourceName: "CircledDownArrow").draw(in: popoverButtonArea(withFrame: cellFrame, smoothed: true))
+                let circledDownArrow = Bundle.module.image(forResource: "CircledDownArrow")!
+                circledDownArrow.draw(in: popoverButtonArea(withFrame: cellFrame, smoothed: true))
             default:
                 break
             }
@@ -756,14 +768,21 @@ class ColorGridView: NSGridView {
         }
     }
     
+    
+    private var previousColor: NSColor?
+    
     // MARK: - public functions
 
     /**
      Try to select the element in the grid that represents the passed color.
      */
     @discardableResult func selectColor(_ color: NSColor) -> Bool {
+        if let previousColor = previousColor, let colorView = colorView(for: previousColor) {
+            colorView.selected = false
+        }
         if let colorView = colorView(for: color) {
             colorView.selected = true
+            previousColor = color
             return true
         }
         return false
@@ -820,7 +839,7 @@ class ColorGridView: NSGridView {
         // Treat each array in views as a column of the grid
         views.forEach { addColumn(with: $0) }
         
-        setPadding(5.0)
+        setPadding(10.0)
         
         // set grid elements size and placement
         (0..<numberOfColumns).forEach {
@@ -861,7 +880,7 @@ class ColorGridView: NSGridView {
      */
     private func colorView(for color: NSColor) -> ColorView? {
         for (columnIndex, colorArray) in colorArrays.enumerated() {
-            if let rowIndex = colorArray.index(of: color) {
+            if let rowIndex = colorArray.firstIndex(of: color) {
                 return column(at: columnIndex).cell(at: rowIndex).contentView as? ColorView
             }
         }
@@ -929,11 +948,12 @@ class ColorView: NSView {
         
         if selected {
             NSColor.white.setStroke()
+            context.stroke(dirtyRect, width: 4.0)
         } else {
-            NSColor.gray.withAlphaComponent(0.5).setStroke()
+            NSColor(white: 0.38, alpha: 1).setStroke()
+            context.setBlendMode(.hardLight)
+            context.stroke(dirtyRect, width: 2.0)
         }
-
-        context.stroke(dirtyRect, width: selected ? 2.0 : 1.0)
     }
     
     override func mouseDown(with event: NSEvent) {
