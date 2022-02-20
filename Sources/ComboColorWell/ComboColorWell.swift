@@ -17,6 +17,18 @@ public class ComboColorWell: NSControl {
     // MARK: - public vars
     
     /**
+     Array of colors we need to be represented by the control.
+     */
+    var colors: [NSColor] {
+        get {
+            return comboColorWellCell.colors
+        }
+        set {
+            comboColorWellCell.colors = newValue
+        }
+    }
+
+    /**
      The color currently represented by the control.
      */
     @IBInspectable public var color: NSColor {
@@ -71,12 +83,17 @@ public class ComboColorWell: NSControl {
     
     private func doInit() {
         cell = ComboColorWellCell()
+        cell?.sendAction(on: [])
     }
     
 }
 
 extension ComboColorWell: NSColorChanging {
     public func changeColor(_ sender: NSColorPanel?) {
+        guard
+            !comboColorWellCell.initingColor
+            else { return }
+
         if let sender = sender {
             comboColorWellCell.colorAction(sender)
         }
@@ -108,10 +125,19 @@ class ComboColorWellCell: NSActionCell {
     // MARK: - public vars
     
     /**
+     Array of colors we need to represent.
+     */
+    var colors = [NSColor]()
+
+    /**
      The color we're representing.
      */
-    var color = NSColor.black {
-        didSet {
+    var color: NSColor {
+        get {
+            colors.first ?? .white
+        }
+        set {
+            colors = [newValue]
             controlView?.needsDisplay = true
         }
     }
@@ -295,34 +321,43 @@ class ComboColorWellCell: NSActionCell {
         // clip to fill the color area
         NSBezierPath.clip(colorArea(withFrame: cellFrame))
 
-        if color.alphaComponent < 1 {
-            // want a diagonal black & white split
-            // start filling all white
+        if colors.count == 1 {
+            if color.alphaComponent < 1 {
+                // want a diagonal black & white split
+                // start filling all white
+                fill(path: path, withColor: .white)
+                // get the color area
+                let area = colorArea(withFrame: cellFrame)
+                // get an empty bezier path to draw the black portion
+                let blackPath = NSBezierPath()
+                // get the origin point of the color area
+                var point = area.origin
+                // set it the starting point of the black path
+                blackPath.move(to: point)
+                // draw a line to opposite diagonal
+                point = NSPoint(x: area.width, y: area.height)
+                blackPath.line(to: point)
+                // draw a line back to origin x
+                point.x = area.origin.x
+                blackPath.line(to: point)
+                // close the triangle
+                blackPath.close()
+                // add clip with the control shape
+                path.addClip()
+                // finally draw the black portion
+                fill(path: blackPath, withColor: .black)
+            }
+            
+            fill(path: path, withColor: color)
+        } else {
             fill(path: path, withColor: .white)
-            // get the color area
+            let dots = Bundle.module.image(forResource: "Ellipsis-Grey")!
             let area = colorArea(withFrame: cellFrame)
-            // get an empty bezier path to draw the black portion
-            let blackPath = NSBezierPath()
-            // get the origin point of the color area
-            var point = area.origin
-            // set it the starting point of the black path
-            blackPath.move(to: point)
-            // draw a line to opposite diagonal
-            point = NSPoint(x: area.width, y: area.height)
-            blackPath.line(to: point)
-            // draw a line back to origin x
-            point.x = area.origin.x
-            blackPath.line(to: point)
-            // close the triangle
-            blackPath.close()
-            // add clip with the control shape
-            path.addClip()
-            // finally draw the black portion
-            fill(path: blackPath, withColor: .black)
+            var rect = NSInsetRect(area, imageInset * 2, imageInset)
+            rect.size = dots.size.resizedKeepingProportions(toSize: rect.size)
+            rect.origin.y = (area.height - rect.height) / 2
+            dots.draw(in: rect)
         }
-        
-        fill(path: path, withColor: color)
-        
         
         // reset the clipping area
         path.setClip()
@@ -471,6 +506,7 @@ class ComboColorWellCell: NSActionCell {
     /**
      Handle state change here.
      */
+    fileprivate var initingColor = false
     private func handleStateChange() {
         let colorPanel = NSColorPanel.shared
         switch state {
@@ -483,6 +519,8 @@ class ComboColorWellCell: NSActionCell {
         case .on:
             if let window = controlView?.window,
                 window.makeFirstResponder(controlView) {
+                defer { initingColor = false }
+                initingColor = true
                 colorPanel.delegate = self
                 colorPanel.showsAlpha = allowClearColor
                 colorPanel.color = color
@@ -618,7 +656,7 @@ class ColorGridController: NSViewController {
     /**
      The color we want to show as selected in the grid.
      */
-    var color = NSColor.black {
+    var color = NSColor.labelColor {
         didSet {
             // try to select the color in the grid view.
             (view as? ColorGridView)?.selectColor(color)
@@ -778,16 +816,14 @@ class ColorGridView: NSGridView {
     /**
      Try to select the element in the grid that represents the passed color.
      */
-    @discardableResult func selectColor(_ color: NSColor) -> Bool {
-        if let previousColor = previousColor, let colorView = colorView(for: previousColor) {
-            colorView.selected = false
-        }
-        if let colorView = colorView(for: color) {
-            colorView.selected = true
-            previousColor = color
-            return true
-        }
-        return false
+    @discardableResult func selectColor(_ color: NSColor?) -> Bool {
+        guard
+            let color = color,
+            let colorView = colorView(for: color)
+            else { return false }
+
+        colorView.selected = true
+        return true
     }
 
     // MARK: - init & overrided functions
@@ -1051,12 +1087,14 @@ extension NSColor {
     }
 }
 
-class myTextView: NSTextView {
-//    override func changeColor(_ sender: Any?) {
-//        if let colorPanel = sender as? NSColorPanel,
-//            let _ = colorPanel.delegate as? ComboColorWellCell {
-//            return
-//        }
-//        super.changeColor(sender)
-//    }
+extension NSSize {
+    func resizedKeepingProportions(toSize targetSize: NSSize) -> NSSize {
+        let widthRatio = targetSize.width / self.width
+        let heightRatio = targetSize.height / self.height
+        if widthRatio < heightRatio {
+            return NSSize(width: floor(self.width * widthRatio),
+                          height: floor(self.height * widthRatio))
+        }
+        return NSSize(width: floor(self.width * heightRatio), height: floor(self.height * heightRatio))
+    }
 }
