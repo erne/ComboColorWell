@@ -295,7 +295,7 @@ class ComboColorWellCell: NSActionCell {
         // clip to fill the color area
         NSBezierPath.clip(colorArea(withFrame: cellFrame))
 
-        if color == .clear {
+        if color.alphaComponent < 1 {
             // want a diagonal black & white split
             // start filling all white
             fill(path: path, withColor: .white)
@@ -319,9 +319,10 @@ class ComboColorWellCell: NSActionCell {
             path.addClip()
             // finally draw the black portion
             fill(path: blackPath, withColor: .black)
-        } else {
-            fill(path: path, withColor: color)
         }
+        
+        fill(path: path, withColor: color)
+        
         
         // reset the clipping area
         path.setClip()
@@ -477,6 +478,7 @@ class ComboColorWellCell: NSActionCell {
             if colorPanel.isVisible,
                 colorPanel.delegate === self {
                 colorPanel.delegate = nil
+                colorPanel.close()
             }
         case .on:
             if let window = controlView?.window,
